@@ -1,7 +1,4 @@
 # Signal Lab — Submission Checklist
-
-Заполни этот файл перед сдачей. Он поможет интервьюеру быстро проверить решение.
-
 ---
 
 ## Репозиторий
@@ -99,7 +96,7 @@ curl -sS http://localhost:3001/api/health
 | Prometheus metric | Поднять стек (`docker compose up -d --build`). Открыть UI `http://localhost:3000`, запустить сценарии (**success**, **system_error** и т.д.) — чтобы счётчики и гистограмма изменились. | `http://localhost:3001/metrics` — искать `scenario_runs_total`, `scenario_run_duration_seconds`, `http_requests_total`. Дополнительно: `http://localhost:9090` → вкладка **Graph** → запрос `scenario_runs_total` → **Execute**. |
 | Grafana dashboard | То же: несколько запусков сценариев из UI за последние 15–30 минут. | `http://localhost:3010` (логин `admin` / `admin`) → **Dashboards** → **Signal Lab**; или `http://localhost:3000/grafana`. Должны быть ненулевые/живые панели (rate по типам, latency, error rate). |
 | Loki log | Запустить любой сценарий из UI (например **success** или **system_error**), подождать ~10–20 с. | В Grafana: **Explore** → datasource **Loki** → запрос `{container=~".*api.*"}` или `|= "scenarioType"` за **Last 15 minutes** → **Run query**. Должны быть JSON-логи API со полями вроде `scenarioType` / `scenarioId`. |
-| Sentry exception | В `.env` задан **`SIGNAL_LAB_SENTRY_DSN`**, контейнер `api` пересоздан после изменения (`docker compose up -d --force-recreate api`). В UI запустить **`system_error`** → Run. | `https://sentry.io` → проект кандидата → **Issues** — новое событие (ошибка вроде `Signal Lab: system_error scenario`), обычно в течение ~1 мин. Если DSN не настраивался — шаг пропускается, в коде инициализация в `apps/api/src/main.ts`. |
+| Sentry exception | В `.env` задан **`SIGNAL_LAB_SENTRY_DSN`**, контейнер `api` пересоздан после изменения (`docker compose up -d --force-recreate api`). В UI запустить **`system_error`** → Run. | `https://sentry.io` → проект → **Issues** — новое событие (ошибка вроде `Signal Lab: system_error scenario`), обычно в течение ~1 мин. Если DSN не настраивался с вашей стороны в .env - шаг пропускается, в коде инициализация в `apps/api/src/main.ts`. |
 
 ---
 
@@ -173,20 +170,8 @@ curl -sS http://localhost:3001/api/health
 - **Поддерживает resume**: **да** — при повторном запуске читать существующий `context.json`, не переделывать завершённые фазы, продолжать с `currentPhase` и незавершённых задач.
 
 ---
-
-## Скриншоты / видео
-
-- [ ] UI приложения
-- [ ] Grafana dashboard с данными
-- [ ] Loki logs
-- [ ] Sentry error
-
-(Приложи файлы или ссылки ниже)
-
----
-
-## Что не успел и что сделал бы первым при +4 часах
-
-*Опционально заполни перед сдачей.* Пример: «Критичные пункты ТЗ закрыты; при +4ч — e2e на сценарии, алерт в Grafana, доработка Promtail под Windows.»
+Итог выполнения: 
+4 часа выполнение ТЗ
+2 часа - тестирование \ фиксы 
 
 
