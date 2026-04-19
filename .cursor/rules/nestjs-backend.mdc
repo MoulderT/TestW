@@ -1,0 +1,12 @@
+---
+description: NestJS API conventions for Signal Lab
+globs: "**/apps/api/**/*.ts,**/api/src/**/*.ts"
+alwaysApply: false
+---
+
+# NestJS (Signal Lab)
+
+- Модули: feature-модули (`ScenarioModule`), не «god module».
+- HTTP: контроллеры тонкие; бизнес-логика в `*Service`; DTO + `class-validator`/`class-transformer` где уместно.
+- Observability: метрики Prometheus через `@nestjs/prometheus` или официальный паттерн проекта; ошибки — в Sentry; структурированные логи в формате, который забирает Loki.
+- Prisma: только через сервисный слой/репозиторий, без сырых запросов в контроллерах.

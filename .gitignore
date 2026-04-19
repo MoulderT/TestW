@@ -1,0 +1,14 @@
+node_modules
+dist
+.next
+coverage
+.env
+.env.local
+*.log
+.DS_Store
+
+# Не публикуем на GitHub (README / рубрик / задание / сам .gitignore — локально)
+/.gitignore
+/README.md
+/RUBRIC.md
+/ASSIGMENT.md

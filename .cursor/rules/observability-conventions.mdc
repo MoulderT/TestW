@@ -1,0 +1,24 @@
+---
+description: Naming for metrics, structured logs, and Sentry usage in Signal Lab
+globs: "**/apps/api/**/*.ts"
+alwaysApply: false
+---
+
+# Observability conventions
+
+## Метрики (Prometheus)
+
+- Счётчики сценариев: префикс согласован с кодом (`signallab_*` или `scenario_*` по мере унификации с PRD 002).
+- Лейблы: не использовать высокую кардинальность (user id, raw URL).
+- HTTP-метрики: если добавляешь `http_requests_total`, лейблы `method`, `path` (нормализованный шаблон), `status_code`.
+
+## Логи (Loki)
+
+- Структура: JSON или одна parse-friendly строка на событие.
+- Поля для сценариев: `scenarioType` / `scenarioId`, `duration`, `error` при наличии.
+- Уровни: `info` успех, `warn` валидация/медленно, `error` сбой.
+
+## Sentry
+
+- DSN только из env; не логировать PII в extra.
+- Исключения: `system_error` и необработанные — `captureException`; для `validation_error` — breadcrumb или отдельный уровень, не спамить issues.

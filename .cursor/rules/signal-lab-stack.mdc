@@ -1,0 +1,19 @@
+---
+description: Mandatory Signal Lab stack — no substitutions without documented rationale
+alwaysApply: true
+---
+
+# Signal Lab — обязательный стек
+
+Замена элементов без сильной аргументации = штраф по заданию.
+
+| Слой | Стек |
+|------|------|
+| Frontend | Next.js, shadcn/ui, Tailwind CSS, TanStack Query, React Hook Form |
+| Backend | NestJS |
+| Data | PostgreSQL, Prisma |
+| Observability | Sentry, Prometheus, Grafana, Loki |
+| Infra | Docker Compose — одна команда поднимает всё |
+
+- Новые фичи — только на этом стеке.
+- Если предлагаешь альтернативу — явно пометь trade-off и согласуй с пользователем.

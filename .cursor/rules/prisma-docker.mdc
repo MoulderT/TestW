@@ -1,0 +1,12 @@
+---
+description: Prisma schema, migrations, Docker Compose alignment
+globs: "**/prisma/**/*,**/docker-compose*.yml,**/compose*.yml"
+alwaysApply: false
+---
+
+# Prisma и Docker
+
+- Схема Prisma — единственный источник правды по моделям БД; миграции коммитить в репозиторий.
+- Имена и связи согласованы с NestJS-сущностями; после смены схемы — `migrate`, не ручной SQL без причины.
+- `docker-compose`: сервисы, порты и имена БД согласованы с тем, что ожидает NestJS и Prisma `DATABASE_URL`.
+- Секреты: только через переменные окружения и `.env.example`; реальные `.env` не коммитить.

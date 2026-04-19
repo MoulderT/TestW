@@ -1,0 +1,13 @@
+---
+description: Next.js App Router + shadcn + TanStack Query + RHF for Signal Lab UI
+globs: "**/apps/web/**/*.{tsx,ts}"
+alwaysApply: false
+---
+
+# Frontend (Signal Lab)
+
+- App Router; клиентские компоненты помечай `"use client"` где нужно.
+- UI: shadcn/ui + Tailwind; не смешивай с другой дизайн-системой.
+- Данные с сервера: TanStack Query для мутаций и кэша (история сценариев и т.д.).
+- Формы: React Hook Form + схемы (например zod) в одном стиле с бэкендом.
+- API: типизированные вызовы к `/api` или к URL Nest — не хардкодь порты в десятке мест, используй env.
