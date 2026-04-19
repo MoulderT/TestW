@@ -121,7 +121,6 @@ curl -sS http://localhost:3001/api/health
 | 3 | `bootstrap-feature.md` | Новая фича по PRD: чтение `prds/`, сверка со stack rules, план, инкрементальная реализация. |
 | 4 | `submission-checklist.md` | Проход по `SUBMISSION_CHECKLIST.md` и `RUBRIC.md` перед сдачей. |
 | 5 | `add-endpoint.md` | Добавление Nest endpoint с логами, метриками, Swagger по конвенциям репо. |
-| 6 | `run-prd.md` | Запуск пайплайна по PRD через orchestrator skill и опционально `.execution/.../context.json`. |
 
 ### Hooks
 
